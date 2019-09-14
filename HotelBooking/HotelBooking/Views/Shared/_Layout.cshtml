@@ -1,0 +1,252 @@
+﻿@using HotelBooking.Models
+@{
+    Customers customers = (Customers)Session["Customer"] ?? null;
+
+}<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Hotel Empire - Hotel Reservation HTML Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/Content/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/slider.css">
+    @*<link rel="stylesheet" href="/Content/css/flatpickr.min.css">*@
+    <link rel="stylesheet" type="text/css" href="/Content/css/font-awesome-4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/flaticon/font/flaticon.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800%7CPlayfair+Display:400,700%7CRoboto:100,300,400,400i,500,700">
+    <link href="/Content/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <script src="/Content/js/ie-emulation-modes-warning.js"></script>
+
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <nav class="navbar navbar-default">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="/Home/Index" class="logo">
+                        <img src="/Content/img/logo.png">
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="/Home/Index">Home</a>
+                        </li>
+                        <li class="dropdown">
+                            @if (customers != null)
+                            {
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Welcome, @customers.NameSurname<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/Account/Index">Account</a></li>
+                                    <li><a href="/Home/Logout">Logout</a></li>
+                                </ul>
+                            }
+                            else
+                            {
+                                <a href="/SignIn/Index">Sign up/Login</a>
+                            }
+                        </li>
+                        <li>
+                            <a href="login.html">Tours and Activities</a>
+                        </li>
+                        <li>
+                            <a href="login.html">Manage Reservation</a>
+                        </li>
+                        <li><a href="/AboutUs/Index">About us</a></li>
+                        <li><a href="/Contact/Index">Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    @RenderBody()
+    <footer class="main-footer clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6 footer-item clearfix">
+                    <div class="footer-item-content">
+                        <a href="index.html" class="logo">
+                            <img src="/Content/img/footer-logo.png">
+                        </a>
+                        <div class="clearfix"></div>
+                        <p>
+                            SunHouse perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium aperiam.<br><br>
+                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur.
+                        </p>
+
+                        <ul class="clearfix">
+                            <li>
+                                <a href="tel:+55-417-634-7071">
+                                    <i class="fa fa-phone"></i>
+                                    +55 4XX-634-7071
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:info@themevessel.com">
+                                    <i class="fa fa-envelope-o"></i>
+                                    info@themevessel.com
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="social-list clearfix">
+                            <a href="#" class="bg-facebook">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                            <a href="#" class="bg-twitter">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                            <a href="#" class="bg-google">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                            <a href="#" class="bg-linkedin">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="bg-pinterest">
+                                <i class="fa fa-pinterest"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 footer-item clearfix">
+                    <div class="footer-item-content">
+                        <h2>Recent Rooms</h2>
+
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="/Content/img/footer-img-1.jpg" alt="footer-img-1">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h3><a href="rooms-details.html">Amazing Place</a></h3>
+                                <span>October 18, 2016</span>
+                                <p>$45.000</p>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="/Content/img/footer-img-2.jpg" alt="footer-img-2">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h3><a href="rooms-details.html">Amazing Place</a></h3>
+                                <span>november 13, 2016</span>
+                                <p>$47.000</p>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="/Content/img/footer-img-3.jpg" alt="footer-img-3">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h3><a href="rooms-details.html">Amazing Place</a></h3>
+                                <span>december 21, 2016</span>
+                                <p>$52.000</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 footer-item clearfix">
+                    <div class="footer-item-content">
+                        <h2>Tags</h2>
+
+                        <a href="#" class="tags">Apps</a>
+                        <a href="#" class="tags">blog right sidebar</a>
+                        <a href="#" class="tags">books</a>
+                        <a href="#" class="tags">Apps</a>
+                        <a href="#" class="tags">business</a>
+                        <a href="#" class="tags">design</a>
+                        <a href="#" class="tags">education</a>
+                        <a href="#" class="tags">Fitness</a>
+                        <a href="#" class="tags">gallery</a>
+                        <a href="#" class="tags">pen</a>
+                        <a href="#" class="tags">photography</a>
+                        <a href="#" class="tags">real</a>
+                        <a href="#" class="tags">web</a>
+                        <a href="#" class="tags">Booking</a>
+                        <a href="#" class="tags">Hotels</a>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 footer-item clearfix">
+                    <div class="footer-item-content">
+                        <h2>Gallery</h2>
+
+                        <div class="gallery-item">
+                            <a href="#">
+                                <img src="/Content/img/gallery-1.jpg" alt="gallery-1">
+                            </a>
+                        </div>
+                        <div class="gallery-item">
+                            <a href="#">
+                                <img src="/Content/img/gallery-2.jpg" alt="gallery-2">
+                            </a>
+                        </div>
+                        <div class="gallery-item">
+                            <a href="#">
+                                <img src="/Content/img/gallery-3.jpg" alt="gallery-3">
+                            </a>
+                        </div>
+                        <div class="gallery-item">
+                            <a href="#">
+                                <img src="/Content/img/gallery-4.jpg" alt="gallery-4">
+                            </a>
+                        </div>
+                        <div class="gallery-item">
+                            <a href="#">
+                                <img src="/Content/img/gallery-5.jpg" alt="gallery-5">
+                            </a>
+                        </div>
+                        <div class="gallery-item">
+                            <a href="#">
+                                <img src="/Content/img/gallery-1.jpg" alt="gallery-1">
+                            </a>
+                        </div>
+                        <div class="gallery-item">
+                            <a href="#">
+                                <img src="/Content/img/gallery-2.jpg" alt="gallery-2">
+                            </a>
+                        </div>
+                        <div class="gallery-item">
+                            <a href="#">
+                                <img src="/Content/img/gallery-3.jpg" alt="gallery-3">
+                            </a>
+                        </div>
+                        <div class="gallery-item">
+                            <a href="#">
+                                <img src="/Content/img/gallery-4.jpg" alt="gallery-4">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="sub-footer">
+        <div class="container">
+            <span>&copy;  2017 Theme Vessel. Trademarks and brands are the property of their respective owners.</span>
+        </div>
+    </div>
+
+    @*<script src="/Content/js/jquery-2.2.0.min.js"></script>*@
+    <script src="/Content/js/bootstrap.min.js"></script>
+    @*<script src="/Content/js/bootstrap-slider.js"></script>*@
+    <script src="/Content/js/ie10-viewport-bug-workaround.js"></script>
+    @*<script src="/Content/js/app.js"></script>*@
+
+</body>
+
+</html>

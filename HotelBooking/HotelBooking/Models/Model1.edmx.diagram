@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3f7101c862bb444095e2abfe4d7429eb" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="HotelBookingDBModel.Bookings" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelBookingDBModel.HotelComments" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelBookingDBModel.HotelPropertyConnects" Width="1.5" PointX="4.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelBookingDBModel.HotelRooms" Width="1.5" PointX="6.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelBookingDBModel.RoomProperties" Width="1.5" PointX="2.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelBookingDBModel.RoomTypes" Width="1.5" PointX="8.125" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelBookingDBModel.HotelPhotos" Width="1.5" PointX="2.375" PointY="8" />
+        <EntityTypeShape EntityType="HotelBookingDBModel.RoomPropertyConnects" Width="1.5" PointX="9.875" PointY="0.75" />
+        <EntityTypeShape EntityType="HotelBookingDBModel.Hotels" Width="1.5" PointX="10.25" PointY="3.625" />
+        <EntityTypeShape EntityType="HotelBookingDBModel.HotelProperties" Width="1.5" PointX="4.375" PointY="8.125" />
+        <EntityTypeShape EntityType="HotelBookingDBModel.Customers" Width="1.5" PointX="6.5" PointY="8.375" />
+        <EntityTypeShape EntityType="HotelBookingDBModel.CountryV10" Width="1.5" PointX="0.75" PointY="2.625" />
+        <EntityTypeShape EntityType="HotelBookingDBModel.DistrictV10" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="HotelBookingDBModel.TownV10" Width="1.5" PointX="9.75" PointY="8.75" />
+        <EntityTypeShape EntityType="HotelBookingDBModel.sysdiagram" Width="1.5" PointX="0.75" PointY="11.75" />
+        <AssociationConnector Association="HotelBookingDBModel.FK_Bookings_Hotels" />
+        <AssociationConnector Association="HotelBookingDBModel.FK_Customers_CountryV10" />
+        <AssociationConnector Association="HotelBookingDBModel.FK_Customers_CountryV101" />
+        <AssociationConnector Association="HotelBookingDBModel.FK_DistrictV10_CountryV10" />
+        <AssociationConnector Association="HotelBookingDBModel.FK_DistrictV10_CountryV101" />
+        <AssociationConnector Association="HotelBookingDBModel.FK_TownV10_CountryV10" />
+        <AssociationConnector Association="HotelBookingDBModel.FK_TownV10_CountryV101" />
+        <AssociationConnector Association="HotelBookingDBModel.FK_HotelComments_Customers" />
+        <AssociationConnector Association="HotelBookingDBModel.FK_HotelComments_Hotels" />
+        <AssociationConnector Association="HotelBookingDBModel.FK_HotelPhotos_Hotels" />
+        <AssociationConnector Association="HotelBookingDBModel.FK_HotelPropertyConnects_Hotels" />
+        <AssociationConnector Association="HotelBookingDBModel.FK_HotelRooms_Hotels" />
+        <AssociationConnector Association="HotelBookingDBModel.FK_Bookings_Customers" />
+        <AssociationConnector Association="HotelBookingDBModel.FK_Bookings_HotelRooms" />
+        <AssociationConnector Association="HotelBookingDBModel.FK_Customers_TownV10" />
+        <AssociationConnector Association="HotelBookingDBModel.FK_DistrictV10_TownV10" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

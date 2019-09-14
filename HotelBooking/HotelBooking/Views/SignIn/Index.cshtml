@@ -1,0 +1,122 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Hotel Empire - Hotel Reservation HTML Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/Content/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/slider.css">
+    <link rel="stylesheet" href="/Content/css/flatpickr.min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/font-awesome-4.5.0//Content/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/flaticon/font/flaticon.css">
+
+    <link rel="stylesheet" type="text/css" href="/Content/css/style.css">
+
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800%7CPlayfair+Display:400,700%7CRoboto:100,300,400,400i,500,700">
+
+    <link href="/Content/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <script src="/Content/js/ie-emulation-modes-warning.js"></script>
+
+</head>
+
+<body class="form-page-body">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-content-box">
+                    <div class="details">
+                        <a href="index.html" class="logo">
+                            <img src="/Content/img/logo.png">
+                        </a>
+                        <form class="login">
+                            <div class="form-group email">
+                                <input type="text" class="input-text" name="Email" id="Email" placeholder="Email" value="">
+                            </div>
+                            <div class="form-group password">
+                                <input type="password" class="input-text" name="Password" id="Password" placeholder="Password" value="">
+                            </div>
+                            <input type="button" name="submit" class="submit" value="Login" id="SignInButton">
+                            @if (Model != null)
+                            {
+                                <label>@Model.ErrorMessage</label>
+                            }
+                            <div class="checkbox remember">
+                                <label>
+                                    <input type="checkbox"> Remember me
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="footer">
+                        <span>
+                          if you dont have an account yet  <a href="/SignUp/Index">Sign up</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/Content/js/jquery-2.2.0.min.js"></script>
+    <script src="/Content/js/bootstrap.min.js"></script>
+    <script src="/Content/js/bootstrap-slider.js"></script>
+
+    <script src="/Content/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="/Content/js/app.js"></script>
+
+    <div class="modal fade" id="myModal" role="dialog" style="display:none;">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:#8b0000; color:white;">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Error</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Uncorrect username or password.Please try again.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        $("#SignInButton").click(function () {
+
+            var Email = document.getElementById("Email").value;
+            var Password = document.getElementById("Password").value;
+
+            $.ajax({
+                type: "POST",
+                url: "/SignIn/Login",
+                data: '{"Email": "' + Email + '","Password": "' + Password + '"}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "JSON",
+                success: function (msg) {
+                    if (msg == "success") {
+
+                        window.location.href = "/Home/Index";
+                    }
+                    else {
+
+                        $("#myModal").modal();
+                    }
+                }
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

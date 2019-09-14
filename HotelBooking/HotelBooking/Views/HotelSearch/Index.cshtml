@@ -1,0 +1,895 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int countDistrict = 0;
+}
+@model HotelBooking.Dto.HotelSearchDto
+
+<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+
+<style>
+    .divClamp {
+        width: 470px;
+        margin: 0 0 1em 0;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+    }
+</style>
+
+<div class="page-banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="breadcrumb-area">
+                    <h2>Hotel List</h2>
+                    <p>Whether you're looking to sell or let your home or want to buy or rent a home, we really are the people for you to come to.</p>
+                    <a href="index.html" class="btn btn-fill">Home</a>
+                    <a href="rooms-list-2.html" class="btn btn-fill btn-default">Hotel List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="rooms-list content-area">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-4 col-md-4 col-xs-12">
+                <div class="sidebar">
+                    <aside class="sidebar-widget">
+                        <div class="review">
+                            <div class="option-bar clearfix">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="section-heading">
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <i class="flaticon-royalty-crown"></i>
+                                                </div>
+                                                <div class="media-body">
+                                                    <h4>Search Hotel</h4>
+                                                    <div class="border"></div>
+                                                    <p>@Model.CityName, @Model.CountryName</p>
+                                                    <p id="hotelCountText">@Model.HotelCount found a suitable hotel.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h2 class="title">Price for one night</h2>
+                            <div class="price-range" style="padding-bottom: 30px;">
+                                <p>
+                                    <label for="amount">Price:</label>
+                                    <input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;" />
+                                </p>
+                                <div id="slider-range" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
+                                    <a href="#" class="ui-slider-handle ui-state-default ui-corner-all" style="left: 20.1%;"></a>
+                                    <a href="#" class="ui-slider-handle ui-state-default ui-corner-all" style="left: 30.1%;"></a>
+                                    <a href="#" style="right: 99.5%;"></a>
+                                    <a href="#" style="left: 99.5%;"></a>
+                                </div>
+                            </div>
+
+                            <h2 class="title">Hotel stars</h2>
+
+                            <div class="checkbox checkbox-theme checkbox-circle">
+                                <div class="row">
+                                    <div class="col-md-1" style="float:left;padding-right:0px;">
+                                        <input id="hotelStar5" type="checkbox" value="5" onchange="getHotelStar(5)" name="HotelStarCheckbox5">
+                                        <label for="hotelStar5">
+                                        </label>
+
+                                    </div>
+                                    <div class="col-md-11" style="float:left; padding-left:0px;">
+                                        <ul class="ratings">
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <span>5 Stars</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="checkbox checkbox-theme checkbox-circle">
+                                <div class="row">
+                                    <div class="col-md-1" style="float:left;padding-right:0px;">
+                                        <input id="hotelStar4" type="checkbox" value="4" onchange="getHotelStar(4)" name="HotelStarCheckbox4">
+                                        <label for="hotelStar4">
+                                        </label>
+
+                                    </div>
+                                    <div class="col-md-11" style="float:left; padding-left:0px;">
+                                        <ul class="ratings">
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                    <span>4 Stars</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="checkbox checkbox-theme checkbox-circle">
+                                <div class="row">
+                                    <div class="col-md-1" style="float:left;padding-right:0px;">
+                                        <input id="hotelStar3" type="checkbox" value="3" onchange="getHotelStar(3)" name="HotelStarCheckbox3">
+                                        <label for="hotelStar3">
+                                        </label>
+
+                                    </div>
+                                    <div class="col-md-11" style="float:left; padding-left:0px;">
+                                        <ul class="ratings">
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                    <span>3 Stars</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="checkbox checkbox-theme checkbox-circle">
+                                <div class="row">
+                                    <div class="col-md-1" style="float:left;padding-right:0px;">
+                                        <input id="hotelStar2" type="checkbox" value="2" onchange="getHotelStar(2)" name="HotelStarCheckbox2">
+                                        <label for="hotelStar2">
+                                        </label>
+
+                                    </div>
+                                    <div class="col-md-11" style="float:left; padding-left:0px;">
+                                        <ul class="ratings">
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                    <span>2 Stars</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="checkbox checkbox-theme checkbox-circle">
+                                <div class="row">
+                                    <div class="col-md-1" style="float:left;padding-right:0px;">
+                                        <input id="hotelStar1" type="checkbox" value="1" onchange="getHotelStar(1)" name="HotelStarCheckbox1">
+                                        <label for="hotelStar1">
+                                        </label>
+
+                                    </div>
+                                    <div class="col-md-11" style="float:left; padding-left:0px;">
+                                        <ul class="ratings">
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                    <span>1 Stars</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="popular-rooms">
+
+                            <h2 class="title">Facilities</h2>
+                            @foreach (var hotelPropertyItem in Model.HotelProperties)
+                            {
+                                <div class="checkbox checkbox-theme checkbox-circle">
+                                    <input id="@(hotelPropertyItem.Title+""+hotelPropertyItem.HotelPropertyId)" type="checkbox" value="@hotelPropertyItem.HotelPropertyId" onchange="getHotelProperty(@hotelPropertyItem.HotelPropertyId)" name="@("HotelPropertyCheckbox"+hotelPropertyItem.HotelPropertyId)">
+                                    <label for="@(hotelPropertyItem.Title+""+hotelPropertyItem.HotelPropertyId)">
+                                        @hotelPropertyItem.Title
+                                    </label>
+                                </div>
+                            }
+                        </div>
+                        <div class="amenities">
+                            <h2 class="title">Discrits</h2>
+                            @foreach (var districtItem in Model.Districts)
+                            {
+                                countDistrict++;
+                                <div class="checkbox checkbox-theme checkbox-circle">
+                                    <input id="@(districtItem.DistrictName+""+countDistrict)" type="checkbox" onchange="getDistrict(@districtItem.DistrictId)" value="@districtItem.DistrictId" name="@("DistrictCheckbox"+districtItem.DistrictId)">
+                                    <label for="@(districtItem.DistrictName+""+countDistrict)">
+                                        @districtItem.DistrictName
+                                    </label>
+                                </div>
+                            }
+                        </div>
+                    </aside>
+                    <div class="Recent-news sidebar-widget">
+
+                        <h2 class="title">Recent News</h2>
+
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="/Content/img/Recent-sub-01.jpg" alt="Recent-sub-01">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <a href="rooms-details.html">Amazing Place</a>
+                                <span>October 18, 2016</span>
+                                <p>$45.000</p>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="/Content/img/Recent-sub-02.jpg" alt="Recent-sub-02">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <a href="rooms-details.html">Amazing Place</a>
+                                <span>October 18, 2016</span>
+                                <p>$45.000</p>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="/Content/img/Recent-sub-03.jpg" alt="Recent-sub-03">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <a href="rooms-details.html">Amazing Place</a>
+                                <span>October 18, 2016</span>
+                                <p>$45.000</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="thumbnail rooms-box clearfix">
+                        <img src="/Content/img/bedroom-1.jpg" alt="bedroom-1">
+
+                        <div class="caption detail">
+
+                            <header class="clearfix">
+                                <div class="pull-left">
+                                    <h5 class="title">
+                                        <a href="rooms-details.html">King Suite</a>
+                                    </h5>
+                                    <ul class="custom-list">
+                                        <li>
+                                            <a href="#">1 bed</a> /
+                                        </li>
+                                        <li>
+                                            <a href="#">2 People</a> /
+                                        </li>
+                                        <li>
+                                            <a href="#">sea  view</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="price">
+                                    <span>from $99/day</span>
+                                </div>
+                            </header>
+                            <p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back.</p>
+
+                            <ul class="facilities-list clearfix">
+                                <li>
+                                    <i class="flaticon-air-conditioner"></i>
+                                    <span>Ac</span>
+                                </li>
+                                <li>
+                                    <i class="flaticon-room-service"></i>
+                                    <span>Room Service</span>
+                                </li>
+                                <li>
+                                    <i class="flaticon-wifi"></i>
+                                    <span>Free Wifi</span>
+                                </li>
+                                <li>
+                                    <i class="flaticon-students-couple-full-body-view"></i>
+                                    <span>2 Persons</span>
+                                </li>
+                                <li>
+                                    <i class="flaticon-car-parking"></i>
+                                    <span>Car Parking</span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-desktop coloi-orange"></i>
+                                    <span>TV</span>
+                                </li>
+                            </ul>
+                            <div class="btn-div">
+                                <a href="rooms-details.html">
+                                    <span class="read-more">Ream More</span>
+                                    <span class="icon-arrow-right2 bg-danger">
+                                        <i class="fa  fa-angle-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="helping-Center sidebar-widget">
+                        <h2 class="title">Helping Center</h2>
+                        <p>Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros.</p>
+                        <ul class="contact-link">
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-map-marker"></i>
+                                    Aenean vulputate porttitor
+                                </a>
+                            </li>
+                            <li>
+                                <a href="tel:+55-417-634-7071">
+                                    <i class="fa fa-phone"></i>
+                                    +55 4XX-634-7071
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:info@themevessel.com">
+                                    <i class="fa fa-envelope-o"></i>
+                                    info@themevessel.com
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8 col-md-8 col-xs-12">
+                <div class="block-heading">
+                    <h4>
+                        <span class="heading-icon">
+                            <i class="fa fa-caret-right icon-design"></i>
+                            <i class="fa fa-th-list"></i>
+                        </span>
+                        Hotel List
+                    </h4>
+
+                    <div class="toggle-view pull-right">
+                        <a href="rooms-list-2.html" class="active-view-btn">
+                            <i class="fa fa-th-list"></i>
+                        </a>
+                        <a href="rooms-grid-2.html" class="change-view-btn">
+                            <i class="fa fa-th-large"></i>
+                        </a>
+                    </div>
+                </div>
+                <div id="AjaxHotelSearchList">
+
+                </div>
+
+                <div id="HotelSearchList">
+                    @foreach (var hotelItem in Model.hotelSearchList)
+                    {
+                        <div class="rooms-list-box clearfix">
+                            <div class=" row-table row-flush">
+                                <div class="col-lg-4  col-md-4 col-sm-4 col-xs-12 rooms-pic">
+                                    <img src="~/Content/photos/@hotelItem.HotelImage" alt="bedroom-1" class="img-responsive">
+                                </div>
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 detail-body">
+
+                                    <header>
+                                        <div class="pull-left">
+                                            <h5 class="title">
+                                                <a href="rooms-details.html">@hotelItem.HotelName</a>
+                                            </h5>
+                                            <ul class="custom-list">
+                                                <li>
+                                                    <a href="#">@hotelItem.RoomName</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="price">
+                                            <span>@hotelItem.Price ₺/ @hotelItem.Day night</span>
+                                        </div>
+                                    </header>
+                                    <p class="divClamp">@hotelItem.Description</p>
+
+                                    <ul class="facilities-list" id="@("propertyList"+hotelItem.HotelId)">
+                                        @foreach (var hotelPropertyItem in hotelItem.hotelProperties)
+                                        {
+                                            <li>
+                                                <i class="@hotelPropertyItem.Icon"></i>
+                                                <span>@hotelPropertyItem.Title</span>
+                                            </li>
+                                        }
+                                    </ul>
+                                    <div class="btn-div">
+                                        <a href="/HotelDetail/Index/@hotelItem.HotelId">
+                                            <span class="icon-arrow-right2 bg-danger" style="cursor:pointer;">
+                                                <label style="color:white; font-size:14px;">Choose</label> <i class="fa  fa-angle-right"></i>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        <li>
+                            <a href="#" aria-label="Previous">
+                                <span aria-hidden="true">«</span>
+                            </a>
+                        </li>
+                        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li>
+                            <a href="#" aria-label="Next">
+                                <span aria-hidden="true">»</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <p id="districtCountText" style="display:none;"></p>
+    <p id="hotelPropertyCountText" style="display:none;"></p>
+    <p id="hotelStarCountText" style="display:none;"></p>
+
+</div>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+<script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+@*<script src="/Content/js/jquery-ui.js"></script>*@
+
+
+<script type="text/javascript">
+
+    $(window).load(function () {
+
+        $(function () {
+            $("#slider-range").slider({
+                range: true,
+                min: 0,
+                max: 1000,
+                values: [0, 1000],
+                slide: function (event, ui) {
+                    $("#amount").val(ui.values[0] + "₺" + " - " + ui.values[1] + "₺");
+                },
+                stop: function (event, ui) {
+
+                var amountValue = document.getElementById("amount").value;
+
+                var minAmount = amountValue.substring(0, amountValue.indexOf("-")).toString().replace("₺","");
+
+                var maxAmount = amountValue.substring(amountValue.lastIndexOf("-") + 1).toString().replace("₺", "");
+
+                 var data = {};
+                 data.minAmount = minAmount;
+                 data.maxAmount = maxAmount;
+                @*data.checkin = '@(Model.checkinDate.ToString().Split(' ')[0])';
+                 data.checkout =  '@(Model.checkoutDate.ToString().Split(' ')[0])';*@
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/HotelSearch/GetHotelMinMaxAmount",
+                        data: JSON.stringify(data),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "JSON",
+                        success: function (data) {
+
+                            $("#HotelSearchList").hide();
+
+                            $("#AjaxHotelSearchList").html('');
+
+                            for (var i = 0; i < data.length; i++) {
+
+                                $('#AjaxHotelSearchList').append('<div class="rooms-list-box clearfix"><div class=" row-table row-flush"><div class="col-lg-4  col-md-4 col-   sm-4     col-xs-12 rooms-pic"><img src="/Content/photos/' + data[i].HotelImage + '" alt="bedroom-1" class="img-responsive"></div><div  class="col-lg-8   col-md-8 col-sm-8 col-xs-12 detail-body"><header><div class="pull-left"><h5 class="title"><a href="rooms-details.html">' + data[i].HotelName + '</a></h5><ul class="custom-list"><li><a href="#">' + data[i].RoomName + '</a></li></ul></div><div  class="price"><span>' + data[i].Price + '   ₺/ ' + data[i].Day + ' gece</span></div></header><p class="divClamp">' + data[i].Description + '</p><ul class="facilities-list" id="propertyList' + data[i].HotelId +'"></ul><div     class="btn-div"><a href="/HotelDetail/Index/' + data[i].HotelId + '"><span class="icon-arrow-  right2 bg-danger" style="cursor:pointer;"><label   style="color:white; font-size:14px;">Seçiniz</label> <i class="fa  fa-angle-right"></i></  span></a></div></div></div></div>');
+
+                                $("#propertyList" + data[i].HotelId).html('');
+
+                                for (var j = 0; j < data[i].hotelProperties.length; j++) {
+                                    $("#propertyList" + data[i].HotelId).append('<li><i class="' + data[i].hotelProperties[j].Icon + '"></i><span>' + data[i].hotelProperties[j].Title + '</    span></li>');
+                                }
+                            }
+
+                            document.getElementById("hotelCountText").innerHTML = data.length + " uygun otel bulundu.";
+                        }
+                    });
+            }
+            });
+            $("#amount").val($("#slider-range").slider("values", 0) + "₺" +
+                " - " + $("#slider-range").slider("values", 1) + "₺");
+        });
+
+    });
+</script>
+
+<script>
+    function getDistrict(districtId) {
+
+        var districts = null;
+
+        var districtList = document.getElementById("districtCountText").innerHTML;
+
+        var res = districtList.split(',');
+
+        if (!$("input[name='DistrictCheckbox" + districtId + "']").is(':checked')) {
+            
+            for (var i = 0; i < res.length; i++) {
+                if (res[i] == districtId) {
+                    res.splice(i, 1);
+                }
+            }
+
+            if (res.length == 1) {
+                res = null;
+                districts = res;
+
+            } else {
+
+                document.getElementById("districtCountText").innerHTML = res;
+                districts = document.getElementById("districtCountText").innerHTML;
+            }
+
+            
+        }
+        else {
+
+            document.getElementById("districtCountText").innerHTML += districtId + ",";
+            districts = document.getElementById("districtCountText").innerHTML;
+
+        }
+
+        var data = {};
+        if (districts != null)
+        {
+            data.districts = districts.substring(0, districts.length - 1);
+        }
+        else
+        {
+            data.districts = districts;
+        }
+        @*data.checkin = '@(Model.checkinDate.ToString().Split(' ')[0])';
+        data.checkout =  '@(Model.checkoutDate.ToString().Split(' ')[0])';*@
+
+        $.ajax({
+            type: "POST",
+            url: "/HotelSearch/GetHotelDistrict",
+            data: JSON.stringify(data),
+            contentType: "application/json; charset=utf-8",
+            dataType: "JSON",
+            success: function (data) {
+
+                $("#HotelSearchList").hide();
+
+                $("#AjaxHotelSearchList").html('');
+
+                for (var i = 0; i < data.length; i++) {
+
+                    $('#AjaxHotelSearchList').append('<div class="rooms-list-box clearfix"><div class=" row-table row-flush"><div class="col-lg-4  col-md-4 col-   sm-4     col-xs-12 rooms-pic"><img src="/Content/photos/' + data[i].HotelImage + '" alt="bedroom-1" class="img-responsive"></div><div  class="col-lg-8   col-md-8 col-sm-8 col-xs-12 detail-body"><header><div class="pull-left"><h5 class="title"><a href="rooms-details.html">' + data[i].HotelName + '</a></h5><ul class="custom-list"><li><a href="#">' + data[i].RoomName + '</a></li></ul></div><div  class="price"><span>' + data[i].Price + '   ₺/ ' + data[i].Day + ' gece</span></div></header><p class="divClamp">' + data[i].Description + '</p><ul class="facilities-list" id="propertyList' + data[i].HotelId + '"></ul><div     class="btn-div"><a href="/HotelDetail/Index/' + data[i].HotelId + '"><span class="icon-arrow-  right2 bg-danger" style="cursor:pointer;"><label   style="color:white; font-size:14px;">Seçiniz</label> <i class="fa  fa-angle-right"></i></  span></a></div></div></div></div>');
+
+                    $("#propertyList" + data[i].HotelId).html('');
+
+                    for (var j = 0; j < data[i].hotelProperties.length; j++) {
+                        $("#propertyList" + data[i].HotelId).append('<li><i class="' + data[i].hotelProperties[j].Icon + '"></i><span>' + data[i].hotelProperties[j].Title + '</    span></li>');
+                    }
+                }
+
+                document.getElementById("hotelCountText").innerHTML = data.length + " uygun otel bulundu.";
+            }
+        });
+    }
+
+    function getHotelProperty(hotelProperty) {
+
+        var hotelProperties = null;
+
+        var hotelPropertiesList = document.getElementById("hotelPropertyCountText").innerHTML;
+
+        var res = hotelPropertiesList.split(',');
+        
+        if (!$("input[name='HotelPropertyCheckbox" + hotelProperty + "']").is(':checked')) {
+
+            for (var i = 0; i < res.length; i++) { 
+                if (res[i] == hotelProperty) {
+                    alert(i);
+                    res.splice(i, 1);
+                }
+            }
+
+            if (res.length==1) {
+                res = null;
+                hotelProperties = res;
+            }
+            else {
+                document.getElementById("hotelPropertyCountText").innerHTML = res;
+                hotelProperties = document.getElementById("hotelPropertyCountText").innerHTML;
+            }
+
+        }
+        else {
+
+            document.getElementById("hotelPropertyCountText").innerHTML += hotelProperty + ",";
+            
+            hotelProperties = document.getElementById("hotelPropertyCountText").innerHTML;
+
+        }
+
+        var data = {};
+        if (hotelProperties != null)
+        {
+            data.hotelProperties = hotelProperties.substring(0, hotelProperties.length - 1);
+        }
+        else
+        {
+            data.hotelProperties = hotelProperties;
+        }
+        
+             @*data.checkin = '@(Model.checkinDate.ToString().Split(' ')[0])';
+             data.checkout =  '@(Model.checkoutDate.ToString().Split(' ')[0])';*@
+
+             $.ajax({
+                 type: "POST",
+                 url: "/HotelSearch/GetHotelProperty",
+                 data: JSON.stringify(data),
+                 contentType: "application/json; charset=utf-8",
+                 dataType: "JSON",
+                 success: function (data) {
+
+                     $("#HotelSearchList").hide();
+
+                     $("#AjaxHotelSearchList").html('');
+
+                     for (var i = 0; i < data.length; i++) {
+
+                         $('#AjaxHotelSearchList').append('<div class="rooms-list-box clearfix"><div class=" row-table row-flush"><div class="col-lg-4  col-md-4 col-   sm-4     col-xs-12 rooms-pic"><img src="/Content/photos/' + data[i].HotelImage + '" alt="bedroom-1" class="img-responsive"></div><div  class="col-lg-8   col-md-8 col-sm-8 col-xs-12 detail-body"><header><div class="pull-left"><h5 class="title"><a href="rooms-details.html">' + data[i].HotelName + '</a></h5><ul class="custom-list"><li><a href="#">' + data[i].RoomName + '</a></li></ul></div><div  class="price"><span>' + data[i].Price + '   ₺/ ' + data[i].Day + ' gece</span></div></header><p class="divClamp">' + data[i].Description + '</p><ul class="facilities-list" id="propertyList' + data[i].HotelId + '"></ul><div     class="btn-div"><a href="/HotelDetail/Index/' + data[i].HotelId + '"><span class="icon-arrow-  right2 bg-danger" style="cursor:pointer;"><label   style="color:white; font-size:14px;">Seçiniz</label> <i class="fa  fa-angle-right"></i></  span></a></div></div></div></div>');
+
+                         $("#propertyList" + data[i].HotelId).html('');
+
+                         for (var j = 0; j < data[i].hotelProperties.length; j++) {
+                             $("#propertyList" + data[i].HotelId).append('<li><i class="' + data[i].hotelProperties[j].Icon + '"></i><span>' + data[i].hotelProperties[j].Title + '</    span></li>');
+                         }
+                     }
+
+                     document.getElementById("hotelCountText").innerHTML = data.length + " found a suitable hotel.";
+
+                 }
+                });
+
+    }
+
+    function getHotelStar(starValue) {
+
+        var hotelStars = null;
+
+        var hotelStarList = document.getElementById("hotelStarCountText").innerHTML;
+
+        if (starValue == 5) {
+
+            if (!$("input[name='HotelStarCheckbox5']").is(':checked')) {
+
+                var res = hotelStarList.split(',');
+
+                for (var i = 0; i < res.length; i++) {
+                    if (res[i] == starValue) {
+                        res.splice(i, 1);
+                    }
+                }
+
+                if (res.length == 1) {
+                    res = null;
+                    hotelStars = res;
+                }
+                else {
+
+                    document.getElementById("hotelStarCountText").innerHTML = res;
+                    hotelStars = document.getElementById("hotelStarCountText").innerHTML;
+                }
+
+            }
+            else {
+
+                document.getElementById("hotelStarCountText").innerHTML += starValue + ",";
+                hotelStars = document.getElementById("hotelStarCountText").innerHTML;
+
+            }
+        }
+
+        if (starValue == 4) {
+
+            if (!$("input[name='HotelStarCheckbox4']").is(':checked')) {
+
+                var res = hotelStarList.split(',');
+
+                for (var i = 0; i < res.length; i++) {
+                    if (res[i] == starValue) {
+                        res.splice(i, 1);
+                    }
+                }
+
+                if (res.length == 1) {
+                    res = null;
+                    hotelStars = res;
+                }
+                else {
+
+                    document.getElementById("hotelStarCountText").innerHTML = res;
+                    hotelStars = document.getElementById("hotelStarCountText").innerHTML;
+                }
+            }
+            else {
+
+                document.getElementById("hotelStarCountText").innerHTML += starValue + ",";
+                hotelStars = document.getElementById("hotelStarCountText").innerHTML;
+
+            }
+        }
+
+
+        if (starValue == 3) {
+
+            if (!$("input[name='HotelStarCheckbox3']").is(':checked')) {
+
+                var res = hotelStarList.split(',');
+
+                for (var i = 0; i < res.length; i++) {
+                    if (res[i] == starValue) {
+                        res.splice(i, 1);
+                    }
+                }
+
+                if (res.length == 1) {
+                    res = null;
+                    hotelStars = res;
+                }
+                else {
+
+                    document.getElementById("hotelStarCountText").innerHTML = res;
+                    hotelStars = document.getElementById("hotelStarCountText").innerHTML;
+                }
+            }
+            else {
+
+                document.getElementById("hotelStarCountText").innerHTML += starValue + ",";
+                hotelStars = document.getElementById("hotelStarCountText").innerHTML;
+
+            }
+        }
+
+
+        if (starValue == 2) {
+
+            if (!$("input[name='HotelStarCheckbox2']").is(':checked')) {
+
+                var res = hotelStarList.split(',');
+
+                for (var i = 0; i < res.length; i++) {
+                    if (res[i] == starValue) {
+                        res.splice(i, 1);
+                    }
+                }
+
+                if (res.length == 1) {
+                    res = null;
+                    hotelStars = res;
+                }
+                else {
+
+                    document.getElementById("hotelStarCountText").innerHTML = res;
+                    hotelStars = document.getElementById("hotelStarCountText").innerHTML;
+                }
+            }
+            else {
+
+                document.getElementById("hotelStarCountText").innerHTML += starValue + ",";
+                hotelStars = document.getElementById("hotelStarCountText").innerHTML;
+
+            }
+        }
+
+
+        if (starValue == 1) {
+
+            if (!$("input[name='HotelStarCheckbox1']").is(':checked')) {
+
+                var res = hotelStarList.split(',');
+
+                for (var i = 0; i < res.length; i++) {
+                    if (res[i] == starValue) {
+                        res.splice(i, 1);
+                    }
+                }
+
+                if (res.length == 1) {
+                    res = null;
+                    hotelStars = res;
+                }
+                else {
+
+                    document.getElementById("hotelStarCountText").innerHTML = res;
+                    hotelStars = document.getElementById("hotelStarCountText").innerHTML;
+                }
+            }
+            else {
+
+                document.getElementById("hotelStarCountText").innerHTML += starValue + ",";
+                hotelStars = document.getElementById("hotelStarCountText").innerHTML;
+
+            }
+        }
+     
+        var data = {};
+        if (hotelStars != null)
+        {
+            data.hotelStars = hotelStars.substring(0, hotelStars.length - 1);
+        }
+        else
+        {
+            data.hotelStars = hotelStars;
+        }
+      
+        @*data.checkin = '@(Model.checkinDate.ToString().Split(' ')[0])';
+        data.checkout =  '@(Model.checkoutDate.ToString().Split(' ')[0])';*@
+
+        $.ajax({
+            type: "POST",
+            url: "/HotelSearch/GetHotelStar",
+            data: JSON.stringify(data),
+            contentType: "application/json; charset=utf-8",
+            dataType: "JSON",
+            success: function (data) {
+
+                $("#HotelSearchList").hide();
+
+                $("#AjaxHotelSearchList").html('');
+
+                for (var i = 0; i < data.length; i++) {
+
+                    $('#AjaxHotelSearchList').append('<div class="rooms-list-box clearfix"><div class=" row-table row-flush"><div class="col-lg-4  col-md-4 col-   sm-4     col-xs-12 rooms-pic"><img src="/Content/photos/' + data[i].HotelImage + '" alt="bedroom-1" class="img-responsive"></div><div  class="col-lg-8   col-md-8 col-sm-8 col-xs-12 detail-body"><header><div class="pull-left"><h5 class="title"><a href="rooms-details.html">' + data[i].HotelName + '</a></h5><ul class="custom-list"><li><a href="#">' + data[i].RoomName + '</a></li></ul></div><div  class="price"><span>' + data[i].Price + '   ₺/ ' + data[i].Day + ' gece</span></div></header><p class="divClamp">' + data[i].Description + '</p><ul class="facilities-list" id="propertyList' + data[i].HotelId + '"></ul><div     class="btn-div"><a href="/HotelDetail/Index/' + data[i].HotelId + '"><span class="icon-arrow-  right2 bg-danger" style="cursor:pointer;"><label   style="color:white; font-size:14px;">Seçiniz</label> <i class="fa  fa-angle-right"></i></  span></a></div></div></div></div>');
+
+                    $("#propertyList" + data[i].HotelId).html('');
+
+                    for (var j = 0; j < data[i].hotelProperties.length; j++) {
+                        $("#propertyList" + data[i].HotelId).append('<li><i class="' + data[i].hotelProperties[j].Icon + '"></i><span>' + data[i].hotelProperties[j].Title + '</    span></li>');
+                    }
+                }
+
+                document.getElementById("hotelCountText").innerHTML = data.length + "founs a suitable hotel.";
+            }
+        });
+    }
+
+</script>

@@ -1,0 +1,346 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model  HotelBooking.Dto.HotelCheckoutDto
+
+<style>
+    .HotelDetailButton:hover {
+        background: transparent;
+        border: solid #ed5565 2px;
+        color: #ed5565;
+    }
+    .HotelDetailButton {
+        background: #ed5565;
+        width: 100%;
+        height: 45px;
+        color: #fff;
+        letter-spacing: 1px;
+        font-size: 16px;
+        border: solid #ed5565 2px;
+        border-radius: 3px;
+    }
+
+    .HotelDetailBox {
+        padding-left: 0px;
+        border-bottom: solid 1px #dbdbdb;
+        line-height: 40px;
+        padding: 7px 0px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        font-weight: 300;
+    }
+</style>
+
+
+<div class="page-banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="breadcrumb-area">
+                    <h2>Checkout</h2>
+                    <p>Whether you're looking to sell or let your home or want to buy or rent a home, we really are the people for you to come to.</p>
+                    <a href="index.html" class="btn btn-fill">Home</a>
+                    <a href="checkout.html" class="btn btn-fill btn-default">Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="shop-cart">
+    <div class="container">
+        <h1 class="title">Checkout</h1>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+                <div class="shop-info">
+                    <p>Returning customer? <a href="login.html">Click here to login</a></p>
+                    <p>Have a coupon? <a href="shopping-cart.html">Click here to enter your code</a></p>
+                </div>
+                <form>
+                    <div class="shop-billing-fields">
+                        <h3>Billing Details</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input type="text" class="input-text" name="first-name" id="first-name" placeholder="Name" value="">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Surname</label>
+                                    <input type="text" class="input-text" name="last-name" id="last-name" placeholder="Surname" value="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="text" class="input-text" name="address" id="email_adresss" placeholder="Email" value="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Phone</label>
+                                    <input type="text" class="input-text" name="address" id="phone_number" placeholder="Phone" value="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Country</label>
+                                    <select class="input-text" id="GetCountry" name="GetCountry">
+                                        <option selected>Choose</option>
+                                        @foreach (var countryItem in Model.Countries)
+                                        {
+                                            <option value="@countryItem.CountryId">@countryItem.CountryName</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>City</label>
+                                    <select class="input-text" id="FillCity" name="FillCity">
+                                        @*@foreach (var cityItem in Model.Cities)
+                                        {
+                                            if (cityItem.CityID == @Model.customerInformationItem.BillCity)
+                                            {
+                                                <option value="@cityItem.CityID" selected>@cityItem.Title</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@cityItem.CityID">@cityItem.Title</option>
+                                            }
+                                        }*@
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="order-review" style="padding: 30px 50px;">
+                    <div class="shop-box">
+
+                        <div class="col-md-12" style="padding-left:0px;">
+                            <h2>@Model.hotelName</h2>
+                        </div>
+
+                        <div class="col-md-12" style="padding-left:0px;">
+                            @if (Model.rate == 1)
+                            {
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            }
+                            else if (Model.rate == 2)
+                            {
+
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            }
+                            else if (Model.rate == 3)
+                            {
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            }
+                            else if (Model.rate == 4)
+                            {
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                            }
+                            else if (Model.rate == 5)
+                            {
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            }
+                        </div>
+
+                        <div class="col-md-12 HotelDetailBox">
+                            <div class="col-md-6" style="padding-left:0px;">
+
+                                <img src="/Content/photos/@Model.hotelPhotos.Photo" style="width:130px; height:100px;" />
+
+                            </div>
+                            <div class="col-md-6">
+
+                                @Model.HotelAddress
+
+                                <div class="col-md-12">
+                                   @Model.roomTypes.Title
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 HotelDetailBox">
+                            <div class="col-md-6" style="padding-left:0px;">Checkin</div>
+                            <div class="col-md-6">@Model.checkin</div>
+
+                            <div class="col-md-6" style="padding-left:0px;">Checkout</div>
+                            <div class="col-md-6">@Model.checkout</div>
+
+                            <div class="col-md-6" style="padding-left:0px;">Konuklar</div>
+                            <div class="col-md-6">@Model.guests.adultCount  Adult and @Model.guests.childCount Kids</div>
+                        </div>
+
+                        <div class="header clearfix">
+                            <div class="product-name">Reservation Price </div>
+                            <div class="product-total">Total</div>
+                        </div>
+                        <ul class="clearfix">
+                            <li>
+                                <div class="product-name">Room Price <strong>× 1</strong></div>
+                                <div class="product-total">@Model.Price ₺</div>
+                            </li>
+                            <li>
+                                <div class="product-name">@Model.nightCount Gece<strong>× 1</strong></div>
+                                <div class="product-total">@(Model.Price* Model.nightCount) ₺</div>
+                            </li>
+                            <li>
+                                <div class="product-name">Taxes<strong>× 1</strong></div>
+                                <div class="product-total">220 ₺</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="submit" name="submit" class="HotelDetailButton" value="Complete Reservation">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pay-invoice">
+                    <div class="header">
+                       Payment Details
+                    </div>
+                    <div class="details">
+                        <form action="https://storage.googleapis.com/themevessel-hotel-empire/index.html">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Name on the card</label>
+                                        <input type="text" class="input-text" name="Name of Card" placeholder="Name on the card" value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Valid-card-number</label>
+                                        <input type="text" class="input-text" name="valid-card-number" placeholder="Valid-card-number" value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-xs-12">
+                                    <div class="form-group">
+                                        <label>Expire date</label>
+                                        <select class="input-text">
+                                            <option value="">01 (jan)</option>
+                                            <option value="">02 (Feb)</option>
+                                            <option value="">03 (Mar)</option>
+                                            <option value="">04 (Apr)</option>
+                                            <option value="">05 (May)</option>
+                                            <option value="">06 (jun)</option>
+                                            <option value="">07 (jul)</option>
+                                            <option value="">08 (sep)</option>
+                                            <option value="">09 (Oct)</option>
+                                            <option value="">10 (Nov)</option>
+                                            <option value="">11 (jan)</option>
+                                            <option value="">12 (Dec)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-xs-12">
+                                    <div class="form-group">
+                                        <label>Expire year</label>
+                                        <select class="input-text">
+                                            <option value="">2016</option>
+                                            <option value="">2017</option>
+                                            <option value="">2018</option>
+                                            <option value="">2019</option>
+                                            <option value="">2020</option>
+                                            <option value="">2021</option>
+                                            <option value="">2022</option>
+                                            <option value="">2023</option>
+                                            <option value="">2024</option>
+                                            <option value="">2025</option>
+                                            <option value="">2026</option>
+                                            <option value="">2027</option>
+                                            <option value="">2028</option>
+                                            <option value="">2029</option>
+                                            <option value="">2030</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-xs-offset-1 col-xs-11">
+                                    <div class="form-group">
+                                        <label>CVC/CVV</label>
+                                        <input type="text" class="input-text" name="Cv-code" id="valid-card-number" placeholder="CVV" value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="submit" name="submit" class="submit" value="Complete Reservation">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $("#GetCountry").change(function () {
+
+        var countyId = $('#GetCountry').val();
+
+        $.ajax({
+            type: "POST",
+            url: "/HotelCheckout/FillCity",
+            data: '{"countryId": "' + countyId + '"}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "JSON",
+            success: function (data) {
+
+                $('#FillCity').empty();
+
+                for (var i = 0; i < data.length; i++) {
+                    $("#FillCity").append('<option value="' + data[i].TownId + '">' + data[i].TownName + '</option>');
+                }
+            }
+        });
+    });
+</script>

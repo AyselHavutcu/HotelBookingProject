@@ -1,0 +1,497 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BCCB4581-A098-4A86-8A82-758AEC0C4224}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HotelBooking</RootNamespace>
+    <AssemblyName>HotelBooking</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress>false</Use64BitIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\css\animate.min.css" />
+    <Content Include="Content\css\bootstrap-datepicker3.css" />
+    <Content Include="Content\icon\envelope.png" />
+    <Content Include="Content\icon\icons8-shutdown-16.png" />
+    <Content Include="Content\icon\icons8-shutdown-30.png" />
+    <Content Include="Content\icon\keyicon.png" />
+    <Content Include="Content\icon\lock.png" />
+    <Content Include="Content\icon\settings-cog.png" />
+    <Content Include="Content\icon\settings-cog2.png" />
+    <Content Include="Content\icon\settings.png" />
+    <Content Include="Content\js\bootstrap-datepicker.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker.tr.js" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\flaticon\font\flaticon.css" />
+    <Content Include="Content\css\flaticon\font\Flaticon.svg" />
+    <Content Include="Content\css\flatpickr.min.css" />
+    <Content Include="Content\css\flexslider.css" />
+    <Content Include="Content\css\font-awesome-4.5.0\css\font-awesome.min.css" />
+    <Content Include="Content\css\font-awesome-4.5.0\fonts\fontawesome-webfont3295.svg" />
+    <Content Include="Content\css\ie10-viewport-bug-workaround.css" />
+    <Content Include="Content\css\PIE.htc" />
+    <Content Include="Content\css\slider.css" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\img\about-item-1.jpg" />
+    <Content Include="Content\img\about-item-2.jpg" />
+    <Content Include="Content\img\about-item-3.jpg" />
+    <Content Include="Content\img\about-item-4.jpg" />
+    <Content Include="Content\img\about-item-5.jpg" />
+    <Content Include="Content\img\banner-slider-1.jpg" />
+    <Content Include="Content\img\banner-slider-2.jpg" />
+    <Content Include="Content\img\banner-slider-3.jpg" />
+    <Content Include="Content\img\banner-sub-slider.jpg" />
+    <Content Include="Content\img\bedroom-1.jpg" />
+    <Content Include="Content\img\bedroom-2.jpg" />
+    <Content Include="Content\img\bedroom-3.jpg" />
+    <Content Include="Content\img\bedroom-4.jpg" />
+    <Content Include="Content\img\bedroom-5.jpg" />
+    <Content Include="Content\img\bedroom-6.jpg" />
+    <Content Include="Content\img\bedroom-7.jpg" />
+    <Content Include="Content\img\bedroom-8.jpg" />
+    <Content Include="Content\img\bedroom-9.jpg" />
+    <Content Include="Content\img\blog-01.jpg" />
+    <Content Include="Content\img\blog-02.jpg" />
+    <Content Include="Content\img\blog-03.jpg" />
+    <Content Include="Content\img\blog-04.jpg" />
+    <Content Include="Content\img\blog-5.jpg" />
+    <Content Include="Content\img\chevron-left.png" />
+    <Content Include="Content\img\chevron-right.png" />
+    <Content Include="Content\img\close.png" />
+    <Content Include="Content\img\footer-img-1.jpg" />
+    <Content Include="Content\img\footer-img-2.jpg" />
+    <Content Include="Content\img\footer-img-3.jpg" />
+    <Content Include="Content\img\footer-logo.png" />
+    <Content Include="Content\img\full-blog-01.jpg" />
+    <Content Include="Content\img\full-blog-02.jpg" />
+    <Content Include="Content\img\full-blog-03.jpg" />
+    <Content Include="Content\img\full-blog-04.jpg" />
+    <Content Include="Content\img\gallery-1.jpg" />
+    <Content Include="Content\img\gallery-2.jpg" />
+    <Content Include="Content\img\gallery-3.jpg" />
+    <Content Include="Content\img\gallery-4.jpg" />
+    <Content Include="Content\img\gallery-5.jpg" />
+    <Content Include="Content\img\home-chef.jpg" />
+    <Content Include="Content\img\home-parallax.jpg" />
+    <Content Include="Content\img\image-feature1.jpg" />
+    <Content Include="Content\img\image-feature2.jpg" />
+    <Content Include="Content\img\image-feature3.jpg" />
+    <Content Include="Content\img\image-feature4.jpg" />
+    <Content Include="Content\img\list-room-1.jpg" />
+    <Content Include="Content\img\list-room-2.jpg" />
+    <Content Include="Content\img\list-room-3.jpg" />
+    <Content Include="Content\img\list-room-4.jpg" />
+    <Content Include="Content\img\list-room-5.jpg" />
+    <Content Include="Content\img\list-room-6.jpg" />
+    <Content Include="Content\img\list-room-7.jpg" />
+    <Content Include="Content\img\list-room-8.jpg" />
+    <Content Include="Content\img\list-room-9.jpg" />
+    <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\men-img.jpg" />
+    <Content Include="Content\img\new-experience-inner.jpg" />
+    <Content Include="Content\img\photo-services-1.jpg" />
+    <Content Include="Content\img\photo-services-2.jpg" />
+    <Content Include="Content\img\photo-services-3.jpg" />
+    <Content Include="Content\img\photo-services-4.jpg" />
+    <Content Include="Content\img\photo-services-5.jpg" />
+    <Content Include="Content\img\photo-services-6.jpg" />
+    <Content Include="Content\img\profile-01.jpg" />
+    <Content Include="Content\img\profile-02.jpg" />
+    <Content Include="Content\img\profile-03.jpg" />
+    <Content Include="Content\img\profile-04.jpg" />
+    <Content Include="Content\img\recent-comments-pic.png" />
+    <Content Include="Content\img\Recent-sub-01.jpg" />
+    <Content Include="Content\img\Recent-sub-02.jpg" />
+    <Content Include="Content\img\Recent-sub-03.jpg" />
+    <Content Include="Content\img\room01.jpg" />
+    <Content Include="Content\img\room02.jpg" />
+    <Content Include="Content\img\room03.jpg" />
+    <Content Include="Content\img\room04.jpg" />
+    <Content Include="Content\img\room05.jpg" />
+    <Content Include="Content\img\room06.jpg" />
+    <Content Include="Content\img\room07.jpg" />
+    <Content Include="Content\img\room08.jpg" />
+    <Content Include="Content\img\rooms-detail-slider-1.jpg" />
+    <Content Include="Content\img\rooms-detail-slider-2.jpg" />
+    <Content Include="Content\img\rooms-detail-slider-3.jpg" />
+    <Content Include="Content\img\rooms-detail-slider-4.jpg" />
+    <Content Include="Content\img\rooms-detail-slider-5.jpg" />
+    <Content Include="Content\img\rooms-detail-slider-6.jpg" />
+    <Content Include="Content\img\rooms-detail-slider-7.jpg" />
+    <Content Include="Content\img\rooms-detail-slider-8.jpg" />
+    <Content Include="Content\img\spa.png" />
+    <Content Include="Content\img\special-service-img.jpg" />
+    <Content Include="Content\img\spoppinge-home-1.png" />
+    <Content Include="Content\img\spoppinge-home-2.png" />
+    <Content Include="Content\img\spoppinge-home-3.png" />
+    <Content Include="Content\js\app.js" />
+    <Content Include="Content\js\bootstrap-slider.js" />
+    <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\flatpickr.js" />
+    <Content Include="Content\js\ie-emulation-modes-warning.js" />
+    <Content Include="Content\js\ie10-viewport-bug-workaround.js" />
+    <Content Include="Content\js\ion_rangeslider.min.js" />
+    <Content Include="Content\js\jquery-2.2.0.min.js" />
+    <Content Include="Content\js\jquery-ui.js" />
+    <Content Include="Content\js\jquery.flexslider-min.js" />
+    <Content Include="Content\js\nouislider.min.js" />
+    <Content Include="Content\js\slider_pips.min.js" />
+    <Content Include="Content\photos\akgun-1.jpg" />
+    <Content Include="Content\photos\akgun-2.jpg" />
+    <Content Include="Content\photos\akgun-3.JPG" />
+    <Content Include="Content\photos\akgun-4.jpg" />
+    <Content Include="Content\photos\akgun-5.jpg" />
+    <Content Include="Content\photos\akgun-6.jpg" />
+    <Content Include="Content\photos\akgun-7.jpg" />
+    <Content Include="Content\photos\barin-1.jpg" />
+    <Content Include="Content\photos\barin-2.jpg" />
+    <Content Include="Content\photos\barin-3.jpg" />
+    <Content Include="Content\photos\barin-4.jpg" />
+    <Content Include="Content\photos\barin-5.jpeg" />
+    <Content Include="Content\photos\barin-6.jpg" />
+    <Content Include="Content\photos\barin-7.jpg" />
+    <Content Include="Content\photos\degirmen-3.jpg" />
+    <Content Include="Content\photos\degirmen-4.jpg" />
+    <Content Include="Content\photos\degirmen-5.jpg" />
+    <Content Include="Content\photos\degirmen-6.jpg" />
+    <Content Include="Content\photos\degirmen-7.jpg" />
+    <Content Include="Content\photos\degirmennew-1.jpg" />
+    <Content Include="Content\photos\degirmennew-2.jpg" />
+    <Content Include="Content\photos\eyfel-1.jpg" />
+    <Content Include="Content\photos\eyfel-2.jpg" />
+    <Content Include="Content\photos\eyfel-3.jpg" />
+    <Content Include="Content\photos\eyfel-4.jpg" />
+    <Content Include="Content\photos\eyfel-5.jpg" />
+    <Content Include="Content\photos\eyfel-6.jpg" />
+    <Content Include="Content\photos\eyfel-7.jpg" />
+    <Content Include="Content\photos\harem-1.jpg" />
+    <Content Include="Content\photos\harem-2.jpg" />
+    <Content Include="Content\photos\harem-3.jpg" />
+    <Content Include="Content\photos\harem-4.jpg" />
+    <Content Include="Content\photos\harem-5.jpg" />
+    <Content Include="Content\photos\harem-6.jpg" />
+    <Content Include="Content\photos\harem-7.jpg" />
+    <Content Include="Content\photos\kaya-1.jpg" />
+    <Content Include="Content\photos\kaya-2.jpg" />
+    <Content Include="Content\photos\kaya-3.jpg" />
+    <Content Include="Content\photos\kaya-4.jpg" />
+    <Content Include="Content\photos\kaya-5.jpeg" />
+    <Content Include="Content\photos\kaya-6.jpg" />
+    <Content Include="Content\photos\kaya-7.jpg" />
+    <Content Include="Content\photos\kilyos-1.jpg" />
+    <Content Include="Content\photos\kilyos-2.jpg" />
+    <Content Include="Content\photos\kilyos-3.jpg" />
+    <Content Include="Content\photos\kilyos-4.jpg" />
+    <Content Include="Content\photos\kilyos-5.jpg" />
+    <Content Include="Content\photos\kilyos-6.jpg" />
+    <Content Include="Content\photos\kilyos-7.jpg" />
+    <Content Include="Content\photos\mydora-1.jpg" />
+    <Content Include="Content\photos\mydora-2.jpg" />
+    <Content Include="Content\photos\mydora-3.jpg" />
+    <Content Include="Content\photos\mydora-4.jpg" />
+    <Content Include="Content\photos\mydora-5.jpg" />
+    <Content Include="Content\photos\mydora-6.jpg" />
+    <Content Include="Content\photos\mydora-7.jpg" />
+    <Content Include="Content\photos\pen-1.jpg" />
+    <Content Include="Content\photos\pen-2.jpg" />
+    <Content Include="Content\photos\pen-3.jpg" />
+    <Content Include="Content\photos\pen-4.jpg" />
+    <Content Include="Content\photos\pen-5.jpg" />
+    <Content Include="Content\photos\pen-6.jpg" />
+    <Content Include="Content\photos\pen-7.jpg" />
+    <Content Include="Content\photos\star-1.jpg" />
+    <Content Include="Content\photos\star-2.jpg" />
+    <Content Include="Content\photos\star-3.jpg" />
+    <Content Include="Content\photos\star-4.jpg" />
+    <Content Include="Content\photos\star-5.jpg" />
+    <Content Include="Content\photos\star-6.jpg" />
+    <Content Include="Content\photos\star-7.jpg" />
+    <Content Include="Content\photos\washington-1.JPEG" />
+    <Content Include="Content\photos\washington-2.jpg" />
+    <Content Include="Content\photos\washington-3.jpg" />
+    <Content Include="Content\photos\washington-4.jpg" />
+    <Content Include="Content\photos\washington-5.jpg" />
+    <Content Include="Content\photos\washington-6.jpg" />
+    <Content Include="Content\photos\washington-7.jpg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Models\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\css\flaticon\font\Flaticon.eot" />
+    <Content Include="Content\css\flaticon\font\Flaticon.ttf" />
+    <Content Include="Content\css\flaticon\font\Flaticon.woff" />
+    <Content Include="Content\css\flaticon\font\Flaticond41d.eot" />
+    <Content Include="Content\css\font-awesome-4.5.0\fonts\fontawesome-webfont3295.eot" />
+    <Content Include="Content\css\font-awesome-4.5.0\fonts\fontawesome-webfont3295.ttf" />
+    <Content Include="Content\css\font-awesome-4.5.0\fonts\fontawesome-webfont3295.woff" />
+    <Content Include="Content\css\font-awesome-4.5.0\fonts\fontawesome-webfont3295.woff2" />
+    <Content Include="Content\css\font-awesome-4.5.0\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\fonts\glyphicons-halflings-regulard41d.eot" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HotelCheckoutController.cs" />
+    <Compile Include="Controllers\HotelDetailController.cs" />
+    <Compile Include="Controllers\HotelSearchController.cs" />
+    <Compile Include="Controllers\SignInController.cs" />
+    <Compile Include="Controllers\SignUpController.cs" />
+    <Compile Include="Dto\AccountDetailDto.cs" />
+    <Compile Include="Dto\HotelCheckoutDto.cs" />
+    <Compile Include="Dto\HotelDetailDto.cs" />
+    <Compile Include="Dto\HotelSearchDto.cs" />
+    <Compile Include="Dto\RegisterDto.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bookings.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CountryV10.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Customers.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DistrictV10.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HotelComments.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HotelPhotos.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HotelProperties.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HotelPropertyConnects.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HotelRooms.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Hotels.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RoomProperties.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RoomPropertyConnects.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RoomTypes.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TownV10.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\HotelSearchHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="packages.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\HotelSearch\Index.cshtml" />
+    <Content Include="Views\HotelDetail\Index.cshtml" />
+    <Content Include="Views\HotelCheckout\Index.cshtml" />
+    <Content Include="Views\SignIn\Index.cshtml" />
+    <Content Include="Views\SignUp\Index.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>53736</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:53736/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

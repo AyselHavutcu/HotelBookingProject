@@ -1,0 +1,1141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HotelBookingDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bookings">
+          <Key>
+            <PropertyRef Name="BookingId" />
+          </Key>
+          <Property Name="BookingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HotelId" Type="int" />
+          <Property Name="RoomId" Type="int" />
+          <Property Name="FromDate" Type="datetime" />
+          <Property Name="ToDate" Type="datetime" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="AdultCount" Type="int" />
+          <Property Name="ChildCount" Type="int" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="IsPaid" Type="bit" />
+          <Property Name="PaymentType" Type="int" />
+          <Property Name="InsertedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CountryV10">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryName" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameSurname" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="BirthDate" Type="date" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryId" Type="int" />
+          <Property Name="CityId" Type="int" />
+          <Property Name="Status" Type="int" />
+          <Property Name="InsertedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DistrictV10">
+          <Key>
+            <PropertyRef Name="DistrictId" />
+          </Key>
+          <Property Name="DistrictId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryId" Type="int" />
+          <Property Name="TownId" Type="int" />
+          <Property Name="DistrictName" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HotelComments">
+          <Key>
+            <PropertyRef Name="HotelCommentId" />
+          </Key>
+          <Property Name="HotelCommentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HotelId" Type="int" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Comment" Type="nvarchar(max)" />
+          <Property Name="Rating" Type="decimal" Precision="2" Scale="1" />
+          <Property Name="Status" Type="int" />
+          <Property Name="InsertedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="HotelPhotos">
+          <Key>
+            <PropertyRef Name="HotelPhotoId" />
+          </Key>
+          <Property Name="HotelPhotoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HotelId" Type="int" />
+          <Property Name="Photo" Type="nvarchar(max)" />
+          <Property Name="Status" Type="int" />
+          <Property Name="OrderNumber" Type="int" />
+          <Property Name="InsertedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="HotelProperties">
+          <Key>
+            <PropertyRef Name="HotelPropertyId" />
+          </Key>
+          <Property Name="HotelPropertyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Icon" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="int" />
+          <Property Name="InsertedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="HotelPropertyConnects">
+          <Key>
+            <PropertyRef Name="HotelPropertyConnectId" />
+          </Key>
+          <Property Name="HotelPropertyConnectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HotelId" Type="int" />
+          <Property Name="HotelPropertyId" Type="int" />
+        </EntityType>
+        <EntityType Name="HotelRooms">
+          <Key>
+            <PropertyRef Name="HotelRoomId" />
+          </Key>
+          <Property Name="HotelRoomId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HotelId" Type="int" />
+          <Property Name="RoomTypeId" Type="int" />
+          <Property Name="AvailableCount" Type="int" />
+          <Property Name="AvailableFromDate" Type="datetime" />
+          <Property Name="AvailableToDate" Type="datetime" />
+          <Property Name="Price" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="Hotels">
+          <Key>
+            <PropertyRef Name="HotelId" />
+          </Key>
+          <Property Name="HotelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="CountryId" Type="int" />
+          <Property Name="CityId" Type="int" />
+          <Property Name="DistrictId" Type="int" />
+          <Property Name="Star" Type="int" />
+          <Property Name="Rating" Type="decimal" Precision="2" Scale="1" />
+          <Property Name="Map" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="Status" Type="int" />
+          <Property Name="InsertedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="RoomProperties">
+          <Key>
+            <PropertyRef Name="RoomPropertyId" />
+          </Key>
+          <Property Name="RoomPropertyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Status" Type="int" />
+          <Property Name="InsertedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="RoomPropertyConnects">
+          <Key>
+            <PropertyRef Name="RoomPropertyConnectId" />
+          </Key>
+          <Property Name="RoomPropertyConnectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoomId" Type="int" />
+          <Property Name="RoomPropertyId" Type="int" />
+        </EntityType>
+        <EntityType Name="RoomTypes">
+          <Key>
+            <PropertyRef Name="RoomTypeId" />
+          </Key>
+          <Property Name="RoomTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="BedCount" Type="int" />
+          <Property Name="PersonCount" Type="int" />
+          <Property Name="Rebate" Type="bit" />
+          <Property Name="Status" Type="int" />
+          <Property Name="InsertedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TownV10">
+          <Key>
+            <PropertyRef Name="TownId" />
+          </Key>
+          <Property Name="TownId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryId" Type="int" />
+          <Property Name="TownName" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <Association Name="FK_Bookings_Customers">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+          <End Role="Bookings" Type="Self.Bookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Bookings">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bookings_HotelRooms">
+          <End Role="HotelRooms" Type="Self.HotelRooms" Multiplicity="0..1" />
+          <End Role="Bookings" Type="Self.Bookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelRooms">
+              <PropertyRef Name="HotelRoomId" />
+            </Principal>
+            <Dependent Role="Bookings">
+              <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bookings_Hotels">
+          <End Role="Hotels" Type="Self.Hotels" Multiplicity="0..1" />
+          <End Role="Bookings" Type="Self.Bookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hotels">
+              <PropertyRef Name="HotelId" />
+            </Principal>
+            <Dependent Role="Bookings">
+              <PropertyRef Name="HotelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_CountryV10">
+          <End Role="CountryV10" Type="Self.CountryV10" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryV10">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_CountryV101">
+          <End Role="CountryV10" Type="Self.CountryV10" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryV10">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_TownV10">
+          <End Role="TownV10" Type="Self.TownV10" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TownV10">
+              <PropertyRef Name="TownId" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistrictV10_CountryV10">
+          <End Role="CountryV10" Type="Self.CountryV10" Multiplicity="0..1" />
+          <End Role="DistrictV10" Type="Self.DistrictV10" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryV10">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="DistrictV10">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistrictV10_CountryV101">
+          <End Role="CountryV10" Type="Self.CountryV10" Multiplicity="0..1" />
+          <End Role="DistrictV10" Type="Self.DistrictV10" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryV10">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="DistrictV10">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistrictV10_TownV10">
+          <End Role="TownV10" Type="Self.TownV10" Multiplicity="0..1" />
+          <End Role="DistrictV10" Type="Self.DistrictV10" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TownV10">
+              <PropertyRef Name="TownId" />
+            </Principal>
+            <Dependent Role="DistrictV10">
+              <PropertyRef Name="TownId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelComments_Customers">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+          <End Role="HotelComments" Type="Self.HotelComments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="HotelComments">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelComments_Hotels">
+          <End Role="Hotels" Type="Self.Hotels" Multiplicity="0..1" />
+          <End Role="HotelComments" Type="Self.HotelComments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hotels">
+              <PropertyRef Name="HotelId" />
+            </Principal>
+            <Dependent Role="HotelComments">
+              <PropertyRef Name="HotelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelPhotos_Hotels">
+          <End Role="Hotels" Type="Self.Hotels" Multiplicity="0..1" />
+          <End Role="HotelPhotos" Type="Self.HotelPhotos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hotels">
+              <PropertyRef Name="HotelId" />
+            </Principal>
+            <Dependent Role="HotelPhotos">
+              <PropertyRef Name="HotelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelPropertyConnects_Hotels">
+          <End Role="Hotels" Type="Self.Hotels" Multiplicity="0..1" />
+          <End Role="HotelPropertyConnects" Type="Self.HotelPropertyConnects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hotels">
+              <PropertyRef Name="HotelId" />
+            </Principal>
+            <Dependent Role="HotelPropertyConnects">
+              <PropertyRef Name="HotelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelRooms_Hotels">
+          <End Role="Hotels" Type="Self.Hotels" Multiplicity="1" />
+          <End Role="HotelRooms" Type="Self.HotelRooms" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Hotels">
+              <PropertyRef Name="HotelId" />
+            </Principal>
+            <Dependent Role="HotelRooms">
+              <PropertyRef Name="HotelRoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TownV10_CountryV10">
+          <End Role="CountryV10" Type="Self.CountryV10" Multiplicity="0..1" />
+          <End Role="TownV10" Type="Self.TownV10" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryV10">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="TownV10">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TownV10_CountryV101">
+          <End Role="CountryV10" Type="Self.CountryV10" Multiplicity="0..1" />
+          <End Role="TownV10" Type="Self.TownV10" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryV10">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="TownV10">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HotelBookingDBModelStoreContainer">
+          <EntitySet Name="Bookings" EntityType="Self.Bookings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CountryV10" EntityType="Self.CountryV10" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DistrictV10" EntityType="Self.DistrictV10" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelComments" EntityType="Self.HotelComments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelPhotos" EntityType="Self.HotelPhotos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelProperties" EntityType="Self.HotelProperties" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelPropertyConnects" EntityType="Self.HotelPropertyConnects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelRooms" EntityType="Self.HotelRooms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hotels" EntityType="Self.Hotels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomProperties" EntityType="Self.RoomProperties" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomPropertyConnects" EntityType="Self.RoomPropertyConnects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomTypes" EntityType="Self.RoomTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TownV10" EntityType="Self.TownV10" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Bookings_Customers" Association="Self.FK_Bookings_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Bookings" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bookings_HotelRooms" Association="Self.FK_Bookings_HotelRooms">
+            <End Role="HotelRooms" EntitySet="HotelRooms" />
+            <End Role="Bookings" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bookings_Hotels" Association="Self.FK_Bookings_Hotels">
+            <End Role="Hotels" EntitySet="Hotels" />
+            <End Role="Bookings" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_CountryV10" Association="Self.FK_Customers_CountryV10">
+            <End Role="CountryV10" EntitySet="CountryV10" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_CountryV101" Association="Self.FK_Customers_CountryV101">
+            <End Role="CountryV10" EntitySet="CountryV10" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_TownV10" Association="Self.FK_Customers_TownV10">
+            <End Role="TownV10" EntitySet="TownV10" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistrictV10_CountryV10" Association="Self.FK_DistrictV10_CountryV10">
+            <End Role="CountryV10" EntitySet="CountryV10" />
+            <End Role="DistrictV10" EntitySet="DistrictV10" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistrictV10_CountryV101" Association="Self.FK_DistrictV10_CountryV101">
+            <End Role="CountryV10" EntitySet="CountryV10" />
+            <End Role="DistrictV10" EntitySet="DistrictV10" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistrictV10_TownV10" Association="Self.FK_DistrictV10_TownV10">
+            <End Role="TownV10" EntitySet="TownV10" />
+            <End Role="DistrictV10" EntitySet="DistrictV10" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelComments_Customers" Association="Self.FK_HotelComments_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="HotelComments" EntitySet="HotelComments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelComments_Hotels" Association="Self.FK_HotelComments_Hotels">
+            <End Role="Hotels" EntitySet="Hotels" />
+            <End Role="HotelComments" EntitySet="HotelComments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelPhotos_Hotels" Association="Self.FK_HotelPhotos_Hotels">
+            <End Role="Hotels" EntitySet="Hotels" />
+            <End Role="HotelPhotos" EntitySet="HotelPhotos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelPropertyConnects_Hotels" Association="Self.FK_HotelPropertyConnects_Hotels">
+            <End Role="Hotels" EntitySet="Hotels" />
+            <End Role="HotelPropertyConnects" EntitySet="HotelPropertyConnects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelRooms_Hotels" Association="Self.FK_HotelRooms_Hotels">
+            <End Role="Hotels" EntitySet="Hotels" />
+            <End Role="HotelRooms" EntitySet="HotelRooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TownV10_CountryV10" Association="Self.FK_TownV10_CountryV10">
+            <End Role="CountryV10" EntitySet="CountryV10" />
+            <End Role="TownV10" EntitySet="TownV10" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TownV10_CountryV101" Association="Self.FK_TownV10_CountryV101">
+            <End Role="CountryV10" EntitySet="CountryV10" />
+            <End Role="TownV10" EntitySet="TownV10" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HotelBookingDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bookings">
+          <Key>
+            <PropertyRef Name="BookingId" />
+          </Key>
+          <Property Name="BookingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HotelId" Type="Int32" />
+          <Property Name="RoomId" Type="Int32" />
+          <Property Name="FromDate" Type="DateTime" Precision="3" />
+          <Property Name="ToDate" Type="DateTime" Precision="3" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="AdultCount" Type="Int32" />
+          <Property Name="ChildCount" Type="Int32" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="IsPaid" Type="Boolean" />
+          <Property Name="PaymentType" Type="Int32" />
+          <Property Name="InsertedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Hotel" Relationship="HotelBookingDBModel.FK_Bookings_Hotels" FromRole="Bookings" ToRole="Hotels" />
+          <NavigationProperty Name="Customer" Relationship="HotelBookingDBModel.FK_Bookings_Customers" FromRole="Bookings" ToRole="Customers" />
+          <NavigationProperty Name="HotelRoom" Relationship="HotelBookingDBModel.FK_Bookings_HotelRooms" FromRole="Bookings" ToRole="HotelRooms" />
+        </EntityType>
+        <EntityType Name="HotelComments">
+          <Key>
+            <PropertyRef Name="HotelCommentId" />
+          </Key>
+          <Property Name="HotelCommentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HotelId" Type="Int32" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Rating" Type="Decimal" Precision="2" Scale="1" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="InsertedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Customer" Relationship="HotelBookingDBModel.FK_HotelComments_Customers" FromRole="HotelComments" ToRole="Customers" />
+          <NavigationProperty Name="Hotel" Relationship="HotelBookingDBModel.FK_HotelComments_Hotels" FromRole="HotelComments" ToRole="Hotels" />
+        </EntityType>
+        <EntityType Name="HotelPropertyConnects">
+          <Key>
+            <PropertyRef Name="HotelPropertyConnectId" />
+          </Key>
+          <Property Name="HotelPropertyConnectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HotelId" Type="Int32" />
+          <Property Name="HotelPropertyId" Type="Int32" />
+          <NavigationProperty Name="Hotel" Relationship="HotelBookingDBModel.FK_HotelPropertyConnects_Hotels" FromRole="HotelPropertyConnects" ToRole="Hotels" />
+        </EntityType>
+        <EntityType Name="HotelRooms">
+          <Key>
+            <PropertyRef Name="HotelRoomId" />
+          </Key>
+          <Property Name="HotelRoomId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HotelId" Type="Int32" />
+          <Property Name="RoomTypeId" Type="Int32" />
+          <Property Name="AvailableCount" Type="Int32" />
+          <Property Name="AvailableFromDate" Type="DateTime" Precision="3" />
+          <Property Name="AvailableToDate" Type="DateTime" Precision="3" />
+          <Property Name="Price" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="Hotel" Relationship="HotelBookingDBModel.FK_HotelRooms_Hotels" FromRole="HotelRooms" ToRole="Hotels" />
+          <NavigationProperty Name="Bookings" Relationship="HotelBookingDBModel.FK_Bookings_HotelRooms" FromRole="HotelRooms" ToRole="Bookings" />
+        </EntityType>
+        <EntityType Name="RoomProperties">
+          <Key>
+            <PropertyRef Name="RoomPropertyId" />
+          </Key>
+          <Property Name="RoomPropertyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="InsertedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="RoomTypes">
+          <Key>
+            <PropertyRef Name="RoomTypeId" />
+          </Key>
+          <Property Name="RoomTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BedCount" Type="Int32" />
+          <Property Name="PersonCount" Type="Int32" />
+          <Property Name="Rebate" Type="Boolean" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="InsertedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="HotelBookingDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bookings" EntityType="Self.Bookings" />
+          <EntitySet Name="HotelComments" EntityType="Self.HotelComments" />
+          <EntitySet Name="HotelPropertyConnects" EntityType="Self.HotelPropertyConnects" />
+          <EntitySet Name="HotelRooms" EntityType="Self.HotelRooms" />
+          <EntitySet Name="RoomProperties" EntityType="Self.RoomProperties" />
+          <EntitySet Name="RoomTypes" EntityType="Self.RoomTypes" />
+          <EntitySet Name="HotelPhotos" EntityType="HotelBookingDBModel.HotelPhotos" />
+          <EntitySet Name="RoomPropertyConnects" EntityType="HotelBookingDBModel.RoomPropertyConnects" />
+          <EntitySet Name="Hotels" EntityType="HotelBookingDBModel.Hotels" />
+          <EntitySet Name="HotelProperties" EntityType="HotelBookingDBModel.HotelProperties" />
+          <EntitySet Name="Customers" EntityType="HotelBookingDBModel.Customers" />
+          <EntitySet Name="CountryV10" EntityType="HotelBookingDBModel.CountryV10" />
+          <EntitySet Name="DistrictV10" EntityType="HotelBookingDBModel.DistrictV10" />
+          <EntitySet Name="TownV10" EntityType="HotelBookingDBModel.TownV10" />
+          <EntitySet Name="sysdiagrams" EntityType="HotelBookingDBModel.sysdiagram" />
+          <AssociationSet Name="FK_Bookings_Hotels" Association="HotelBookingDBModel.FK_Bookings_Hotels">
+            <End Role="Hotels" EntitySet="Hotels" />
+            <End Role="Bookings" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_CountryV10" Association="HotelBookingDBModel.FK_Customers_CountryV10">
+            <End Role="CountryV10" EntitySet="CountryV10" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_CountryV101" Association="HotelBookingDBModel.FK_Customers_CountryV101">
+            <End Role="CountryV10" EntitySet="CountryV10" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistrictV10_CountryV10" Association="HotelBookingDBModel.FK_DistrictV10_CountryV10">
+            <End Role="CountryV10" EntitySet="CountryV10" />
+            <End Role="DistrictV10" EntitySet="DistrictV10" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistrictV10_CountryV101" Association="HotelBookingDBModel.FK_DistrictV10_CountryV101">
+            <End Role="CountryV10" EntitySet="CountryV10" />
+            <End Role="DistrictV10" EntitySet="DistrictV10" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TownV10_CountryV10" Association="HotelBookingDBModel.FK_TownV10_CountryV10">
+            <End Role="CountryV10" EntitySet="CountryV10" />
+            <End Role="TownV10" EntitySet="TownV10" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TownV10_CountryV101" Association="HotelBookingDBModel.FK_TownV10_CountryV101">
+            <End Role="CountryV10" EntitySet="CountryV10" />
+            <End Role="TownV10" EntitySet="TownV10" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelComments_Customers" Association="HotelBookingDBModel.FK_HotelComments_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="HotelComments" EntitySet="HotelComments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelComments_Hotels" Association="HotelBookingDBModel.FK_HotelComments_Hotels">
+            <End Role="Hotels" EntitySet="Hotels" />
+            <End Role="HotelComments" EntitySet="HotelComments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelPhotos_Hotels" Association="HotelBookingDBModel.FK_HotelPhotos_Hotels">
+            <End Role="Hotels" EntitySet="Hotels" />
+            <End Role="HotelPhotos" EntitySet="HotelPhotos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelPropertyConnects_Hotels" Association="HotelBookingDBModel.FK_HotelPropertyConnects_Hotels">
+            <End Role="Hotels" EntitySet="Hotels" />
+            <End Role="HotelPropertyConnects" EntitySet="HotelPropertyConnects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelRooms_Hotels" Association="HotelBookingDBModel.FK_HotelRooms_Hotels">
+            <End Role="Hotels" EntitySet="Hotels" />
+            <End Role="HotelRooms" EntitySet="HotelRooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bookings_Customers" Association="HotelBookingDBModel.FK_Bookings_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Bookings" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bookings_HotelRooms" Association="HotelBookingDBModel.FK_Bookings_HotelRooms">
+            <End Role="HotelRooms" EntitySet="HotelRooms" />
+            <End Role="Bookings" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_TownV10" Association="HotelBookingDBModel.FK_Customers_TownV10">
+            <End Role="TownV10" EntitySet="TownV10" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistrictV10_TownV10" Association="HotelBookingDBModel.FK_DistrictV10_TownV10">
+            <End Role="TownV10" EntitySet="TownV10" />
+            <End Role="DistrictV10" EntitySet="DistrictV10" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="HotelPhotos">
+          <Key>
+            <PropertyRef Name="HotelPhotoId" />
+          </Key>
+          <Property Name="HotelPhotoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HotelId" Type="Int32" />
+          <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="OrderNumber" Type="Int32" />
+          <Property Name="InsertedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Hotel" Relationship="HotelBookingDBModel.FK_HotelPhotos_Hotels" FromRole="HotelPhotos" ToRole="Hotels" />
+        </EntityType>
+        <EntityType Name="RoomPropertyConnects">
+          <Key>
+            <PropertyRef Name="RoomPropertyConnectId" />
+          </Key>
+          <Property Name="RoomPropertyConnectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoomId" Type="Int32" />
+          <Property Name="RoomPropertyId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Hotels">
+          <Key>
+            <PropertyRef Name="HotelId" />
+          </Key>
+          <Property Name="HotelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CountryId" Type="Int32" />
+          <Property Name="CityId" Type="Int32" />
+          <Property Name="DistrictId" Type="Int32" />
+          <Property Name="Star" Type="Int32" />
+          <Property Name="Rating" Type="Decimal" Precision="2" Scale="1" />
+          <Property Name="Map" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="InsertedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Bookings" Relationship="HotelBookingDBModel.FK_Bookings_Hotels" FromRole="Hotels" ToRole="Bookings" />
+          <NavigationProperty Name="HotelComments" Relationship="HotelBookingDBModel.FK_HotelComments_Hotels" FromRole="Hotels" ToRole="HotelComments" />
+          <NavigationProperty Name="HotelPhotos" Relationship="HotelBookingDBModel.FK_HotelPhotos_Hotels" FromRole="Hotels" ToRole="HotelPhotos" />
+          <NavigationProperty Name="HotelPropertyConnects" Relationship="HotelBookingDBModel.FK_HotelPropertyConnects_Hotels" FromRole="Hotels" ToRole="HotelPropertyConnects" />
+          <NavigationProperty Name="HotelRoom" Relationship="HotelBookingDBModel.FK_HotelRooms_Hotels" FromRole="Hotels" ToRole="HotelRooms" />
+        </EntityType>
+        <EntityType Name="HotelProperties">
+          <Key>
+            <PropertyRef Name="HotelPropertyId" />
+          </Key>
+          <Property Name="HotelPropertyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Icon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="InsertedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameSurname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Precision="0" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryId" Type="Int32" />
+          <Property Name="CityId" Type="Int32" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="InsertedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CountryV10" Relationship="HotelBookingDBModel.FK_Customers_CountryV10" FromRole="Customers" ToRole="CountryV10" />
+          <NavigationProperty Name="CountryV101" Relationship="HotelBookingDBModel.FK_Customers_CountryV101" FromRole="Customers" ToRole="CountryV10" />
+          <NavigationProperty Name="HotelComments" Relationship="HotelBookingDBModel.FK_HotelComments_Customers" FromRole="Customers" ToRole="HotelComments" />
+          <NavigationProperty Name="Bookings" Relationship="HotelBookingDBModel.FK_Bookings_Customers" FromRole="Customers" ToRole="Bookings" />
+          <NavigationProperty Name="TownV10" Relationship="HotelBookingDBModel.FK_Customers_TownV10" FromRole="Customers" ToRole="TownV10" />
+        </EntityType>
+        <EntityType Name="CountryV10">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customers" Relationship="HotelBookingDBModel.FK_Customers_CountryV10" FromRole="CountryV10" ToRole="Customers" />
+          <NavigationProperty Name="Customers1" Relationship="HotelBookingDBModel.FK_Customers_CountryV101" FromRole="CountryV10" ToRole="Customers" />
+          <NavigationProperty Name="DistrictV10" Relationship="HotelBookingDBModel.FK_DistrictV10_CountryV10" FromRole="CountryV10" ToRole="DistrictV10" />
+          <NavigationProperty Name="DistrictV101" Relationship="HotelBookingDBModel.FK_DistrictV10_CountryV101" FromRole="CountryV10" ToRole="DistrictV10" />
+          <NavigationProperty Name="TownV10" Relationship="HotelBookingDBModel.FK_TownV10_CountryV10" FromRole="CountryV10" ToRole="TownV10" />
+          <NavigationProperty Name="TownV101" Relationship="HotelBookingDBModel.FK_TownV10_CountryV101" FromRole="CountryV10" ToRole="TownV10" />
+        </EntityType>
+        <EntityType Name="DistrictV10">
+          <Key>
+            <PropertyRef Name="DistrictId" />
+          </Key>
+          <Property Name="DistrictId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryId" Type="Int32" />
+          <Property Name="TownId" Type="Int32" />
+          <Property Name="DistrictName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CountryV10" Relationship="HotelBookingDBModel.FK_DistrictV10_CountryV10" FromRole="DistrictV10" ToRole="CountryV10" />
+          <NavigationProperty Name="CountryV101" Relationship="HotelBookingDBModel.FK_DistrictV10_CountryV101" FromRole="DistrictV10" ToRole="CountryV10" />
+          <NavigationProperty Name="TownV10" Relationship="HotelBookingDBModel.FK_DistrictV10_TownV10" FromRole="DistrictV10" ToRole="TownV10" />
+        </EntityType>
+        <EntityType Name="TownV10">
+          <Key>
+            <PropertyRef Name="TownId" />
+          </Key>
+          <Property Name="TownId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryId" Type="Int32" />
+          <Property Name="TownName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CountryV10" Relationship="HotelBookingDBModel.FK_TownV10_CountryV10" FromRole="TownV10" ToRole="CountryV10" />
+          <NavigationProperty Name="CountryV101" Relationship="HotelBookingDBModel.FK_TownV10_CountryV101" FromRole="TownV10" ToRole="CountryV10" />
+          <NavigationProperty Name="Customers" Relationship="HotelBookingDBModel.FK_Customers_TownV10" FromRole="TownV10" ToRole="Customers" />
+          <NavigationProperty Name="DistrictV10" Relationship="HotelBookingDBModel.FK_DistrictV10_TownV10" FromRole="TownV10" ToRole="DistrictV10" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Bookings_Hotels">
+          <End Type="HotelBookingDBModel.Hotels" Role="Hotels" Multiplicity="0..1" />
+          <End Type="HotelBookingDBModel.Bookings" Role="Bookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hotels">
+              <PropertyRef Name="HotelId" />
+            </Principal>
+            <Dependent Role="Bookings">
+              <PropertyRef Name="HotelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_CountryV10">
+          <End Type="HotelBookingDBModel.CountryV10" Role="CountryV10" Multiplicity="0..1" />
+          <End Type="HotelBookingDBModel.Customers" Role="Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryV10">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_CountryV101">
+          <End Type="HotelBookingDBModel.CountryV10" Role="CountryV10" Multiplicity="0..1" />
+          <End Type="HotelBookingDBModel.Customers" Role="Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryV10">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistrictV10_CountryV10">
+          <End Type="HotelBookingDBModel.CountryV10" Role="CountryV10" Multiplicity="0..1" />
+          <End Type="HotelBookingDBModel.DistrictV10" Role="DistrictV10" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryV10">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="DistrictV10">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistrictV10_CountryV101">
+          <End Type="HotelBookingDBModel.CountryV10" Role="CountryV10" Multiplicity="0..1" />
+          <End Type="HotelBookingDBModel.DistrictV10" Role="DistrictV10" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryV10">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="DistrictV10">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TownV10_CountryV10">
+          <End Type="HotelBookingDBModel.CountryV10" Role="CountryV10" Multiplicity="0..1" />
+          <End Type="HotelBookingDBModel.TownV10" Role="TownV10" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryV10">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="TownV10">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TownV10_CountryV101">
+          <End Type="HotelBookingDBModel.CountryV10" Role="CountryV10" Multiplicity="0..1" />
+          <End Type="HotelBookingDBModel.TownV10" Role="TownV10" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryV10">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="TownV10">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelComments_Customers">
+          <End Type="HotelBookingDBModel.Customers" Role="Customers" Multiplicity="0..1" />
+          <End Type="HotelBookingDBModel.HotelComments" Role="HotelComments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="HotelComments">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelComments_Hotels">
+          <End Type="HotelBookingDBModel.Hotels" Role="Hotels" Multiplicity="0..1" />
+          <End Type="HotelBookingDBModel.HotelComments" Role="HotelComments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hotels">
+              <PropertyRef Name="HotelId" />
+            </Principal>
+            <Dependent Role="HotelComments">
+              <PropertyRef Name="HotelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelPhotos_Hotels">
+          <End Type="HotelBookingDBModel.Hotels" Role="Hotels" Multiplicity="0..1" />
+          <End Type="HotelBookingDBModel.HotelPhotos" Role="HotelPhotos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hotels">
+              <PropertyRef Name="HotelId" />
+            </Principal>
+            <Dependent Role="HotelPhotos">
+              <PropertyRef Name="HotelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelPropertyConnects_Hotels">
+          <End Type="HotelBookingDBModel.Hotels" Role="Hotels" Multiplicity="0..1" />
+          <End Type="HotelBookingDBModel.HotelPropertyConnects" Role="HotelPropertyConnects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hotels">
+              <PropertyRef Name="HotelId" />
+            </Principal>
+            <Dependent Role="HotelPropertyConnects">
+              <PropertyRef Name="HotelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelRooms_Hotels">
+          <End Type="HotelBookingDBModel.Hotels" Role="Hotels" Multiplicity="1" />
+          <End Type="HotelBookingDBModel.HotelRooms" Role="HotelRooms" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Hotels">
+              <PropertyRef Name="HotelId" />
+            </Principal>
+            <Dependent Role="HotelRooms">
+              <PropertyRef Name="HotelRoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bookings_Customers">
+          <End Type="HotelBookingDBModel.Customers" Role="Customers" Multiplicity="0..1" />
+          <End Type="HotelBookingDBModel.Bookings" Role="Bookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Bookings">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bookings_HotelRooms">
+          <End Type="HotelBookingDBModel.HotelRooms" Role="HotelRooms" Multiplicity="0..1" />
+          <End Type="HotelBookingDBModel.Bookings" Role="Bookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelRooms">
+              <PropertyRef Name="HotelRoomId" />
+            </Principal>
+            <Dependent Role="Bookings">
+              <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_TownV10">
+          <End Type="HotelBookingDBModel.TownV10" Role="TownV10" Multiplicity="0..1" />
+          <End Type="HotelBookingDBModel.Customers" Role="Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TownV10">
+              <PropertyRef Name="TownId" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistrictV10_TownV10">
+          <End Type="HotelBookingDBModel.TownV10" Role="TownV10" Multiplicity="0..1" />
+          <End Type="HotelBookingDBModel.DistrictV10" Role="DistrictV10" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TownV10">
+              <PropertyRef Name="TownId" />
+            </Principal>
+            <Dependent Role="DistrictV10">
+              <PropertyRef Name="TownId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HotelBookingDBModelStoreContainer" CdmEntityContainer="HotelBookingDBEntities">
+          <EntitySetMapping Name="Bookings">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.Bookings">
+              <MappingFragment StoreEntitySet="Bookings">
+                <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+                <ScalarProperty Name="HotelId" ColumnName="HotelId" />
+                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="AdultCount" ColumnName="AdultCount" />
+                <ScalarProperty Name="ChildCount" ColumnName="ChildCount" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="IsPaid" ColumnName="IsPaid" />
+                <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelComments">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.HotelComments">
+              <MappingFragment StoreEntitySet="HotelComments">
+                <ScalarProperty Name="HotelCommentId" ColumnName="HotelCommentId" />
+                <ScalarProperty Name="HotelId" ColumnName="HotelId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelPropertyConnects">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.HotelPropertyConnects">
+              <MappingFragment StoreEntitySet="HotelPropertyConnects">
+                <ScalarProperty Name="HotelPropertyConnectId" ColumnName="HotelPropertyConnectId" />
+                <ScalarProperty Name="HotelId" ColumnName="HotelId" />
+                <ScalarProperty Name="HotelPropertyId" ColumnName="HotelPropertyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelRooms">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.HotelRooms">
+              <MappingFragment StoreEntitySet="HotelRooms">
+                <ScalarProperty Name="HotelRoomId" ColumnName="HotelRoomId" />
+                <ScalarProperty Name="HotelId" ColumnName="HotelId" />
+                <ScalarProperty Name="RoomTypeId" ColumnName="RoomTypeId" />
+                <ScalarProperty Name="AvailableCount" ColumnName="AvailableCount" />
+                <ScalarProperty Name="AvailableFromDate" ColumnName="AvailableFromDate" />
+                <ScalarProperty Name="AvailableToDate" ColumnName="AvailableToDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomProperties">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.RoomProperties">
+              <MappingFragment StoreEntitySet="RoomProperties">
+                <ScalarProperty Name="RoomPropertyId" ColumnName="RoomPropertyId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomTypes">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.RoomTypes">
+              <MappingFragment StoreEntitySet="RoomTypes">
+                <ScalarProperty Name="RoomTypeId" ColumnName="RoomTypeId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="BedCount" ColumnName="BedCount" />
+                <ScalarProperty Name="PersonCount" ColumnName="PersonCount" />
+                <ScalarProperty Name="Rebate" ColumnName="Rebate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelPhotos">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.HotelPhotos">
+              <MappingFragment StoreEntitySet="HotelPhotos">
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="HotelId" ColumnName="HotelId" />
+                <ScalarProperty Name="HotelPhotoId" ColumnName="HotelPhotoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomPropertyConnects">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.RoomPropertyConnects">
+              <MappingFragment StoreEntitySet="RoomPropertyConnects">
+                <ScalarProperty Name="RoomPropertyId" ColumnName="RoomPropertyId" />
+                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+                <ScalarProperty Name="RoomPropertyConnectId" ColumnName="RoomPropertyConnectId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hotels">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.Hotels">
+              <MappingFragment StoreEntitySet="Hotels">
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Map" ColumnName="Map" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Star" ColumnName="Star" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="HotelId" ColumnName="HotelId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelProperties">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.HotelProperties">
+              <MappingFragment StoreEntitySet="HotelProperties">
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="HotelPropertyId" ColumnName="HotelPropertyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.Customers">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="NameSurname" ColumnName="NameSurname" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CountryV10">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.CountryV10">
+              <MappingFragment StoreEntitySet="CountryV10">
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DistrictV10">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.DistrictV10">
+              <MappingFragment StoreEntitySet="DistrictV10">
+                <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+                <ScalarProperty Name="TownId" ColumnName="TownId" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TownV10">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.TownV10">
+              <MappingFragment StoreEntitySet="TownV10">
+                <ScalarProperty Name="TownName" ColumnName="TownName" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="TownId" ColumnName="TownId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
